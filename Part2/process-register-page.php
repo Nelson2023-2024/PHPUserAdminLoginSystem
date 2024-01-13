@@ -17,6 +17,20 @@ try{
         $email = strtolower(filter_var($_POST['email'], FILTER_VALIDATE_EMAIL));
         empty($email) ? array_push($errors, "You forgot to enter your email or the email format is incorect") :'';
 
+        //checking for duplicate entries of email
+        $check_duplicate_query = "SELECT * FROM users WHERE email = ?";
+        $check_duplicate_stmt = mysqli_stmt_init($dbcon);
+        mysqli_stmt_prepare($check_duplicate_stmt, $check_duplicate_query);
+        mysqli_stmt_bind_param($check_duplicate_stmt,'s',$email);
+        mysqli_stmt_execute($check_duplicate_stmt);
+        $result = mysqli_stmt_get_result($check_duplicate_stmt);
+
+        //if the record is == to 1 in the DB
+        if(mysqli_num_rows($result) == 1) {
+            array_push($errors, "Email already exists");
+            
+        }
+
         //validate both passwords
         $password1 = trim($_POST['password1']);
         $password2 = trim($_POST['password2']);
