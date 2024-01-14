@@ -32,7 +32,7 @@ try {
         $result = mysqli_stmt_get_result($select_stmt);
 
         $row = mysqli_fetch_assoc($result);
-        //var_dump($row);
+        var_dump($row);
         //if the result is found in the DB
         if (mysqli_num_rows($result) == 1) {
             //veriry if the password entered is equal to the password in the Db
