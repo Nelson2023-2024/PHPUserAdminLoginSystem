@@ -45,6 +45,7 @@ try {
                 $url = $_SESSION['user_level'] === 1 ? 'adminpage.php' : 'memberpage.php';
 
                 header('Location: ' . $url);
+                exit
             } else { //if passqord does no match records
                 array_push($errors, "Email/Password did not match our records");
                 array_push($errors, "Perharps you need to regiseter, just click the register");
