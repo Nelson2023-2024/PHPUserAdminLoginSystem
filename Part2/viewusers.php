@@ -1,4 +1,12 @@
-<?php
+<?php 
+session_start();
+
+if(!isset($_SESSION['user_level']) || $_SESSION['user_level']!==1){
+    header("Location: login.php");
+    exit();
+}
+
+
 //include the connection 
 require('./mysqli_connect.php');
 
@@ -8,13 +16,6 @@ mysqli_stmt_prepare($select_stmt, $select_query);
 mysqli_stmt_execute($select_stmt);
 
 $result = mysqli_stmt_get_result($select_stmt);
-
-if($row = mysqli_fetch_assoc($result)){
-    // var_dump($row);
-}
-else echo "Unable to fetch data"
-
-
 
 ?>
 
@@ -47,6 +48,7 @@ else echo "Unable to fetch data"
                 </ul>
             </nav>
             <div class="col-sm-10">
+                <?php var_dump($_SESSION) ?>
                 <table class="table table-striped ">
                     <tr>
                         <th>ID</th>
@@ -55,14 +57,19 @@ else echo "Unable to fetch data"
                         <th>Registration Date</th>
                     </tr>
                     <?php
-                    echo "
+                    while($row = mysqli_fetch_assoc($result)){
+                       // var_dump($row);
+                        echo "
                     <tr>
                         <td>$row[user_id]</td>
                         <td>$row[name]</td>
                         <td>$row[email]</td>
                         <td>$row[regdat]</td>
                     </tr>
-                    "
+                    ";
+                    
+                    }
+                    
                     ?>
 
                 </table>

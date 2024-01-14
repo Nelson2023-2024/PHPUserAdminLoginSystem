@@ -1,8 +1,10 @@
 <?php
 session_start();
 
-if(!isset($_SESSION['user_level']) || $_SESSION['user_level'] !==0) header("Location: login.php");
-exit();
+if(!isset($_SESSION['user_level']) || $_SESSION['user_level'] !==0) {
+    header("Location: login.php");
+    exit();
+}
 
 ?>
 <!DOCTYPE html>
@@ -34,6 +36,8 @@ exit();
             <!-- Center Column Content Section -->
             <div class="col-sm-8">
                 <h2 class="text-center">This is the Member's Page</h2>
+                <?php var_dump($_SESSION);
+?>
                 <p>The members page content. The members page content. The members page content.
                     <br>The members page content. The members page content. The members page content.
                     <br>The members page content. The members page content. The members page content.
