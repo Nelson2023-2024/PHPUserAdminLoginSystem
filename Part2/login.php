@@ -28,7 +28,7 @@
             <!-- Validate Input -->
             <?php
             if ($_SERVER['REQUEST_METHOD'] == 'POST') { //#1
-                require('process-login.php');
+                require('./process-login.php');
             } // End of the main Submit conditional.
             ?>
             <div class="col-sm-8">

@@ -5,7 +5,8 @@ CREATE TABLE users(
     last_name VARCHAR(50) NOT NULL,
     email VARCHAR(50) NOT NULL,
     password VARCHAR(100) NOT NULL,
-    registration_date DATETIME 
+    registration_date DATETIME ,
+    user_level TINYINT(1) UNSIGNED
 
 
 );
