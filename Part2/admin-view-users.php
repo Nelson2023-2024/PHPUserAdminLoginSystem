@@ -96,6 +96,8 @@ var_dump($_SESSION['user_level'])
 
                                
                             }
+
+                            echo "</table>";
                         } else { //if the query did not execute
                             echo
                             '<p class="text-center">The current users could not be retrieved. ';
